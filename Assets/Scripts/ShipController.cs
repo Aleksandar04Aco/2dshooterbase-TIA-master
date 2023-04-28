@@ -1,25 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
-/*
- * Skjutande
- * Hindra att man åker utanför
- * Fiender
- - (Diagonal förflyttning)
- - Musik
- - Livräkning & gameover
- - Highscore 
- - Powerups (speed, vapen)
-
- SKOTT:
- x Åka uppåt
- x Ta bort när ovanför skärmen
- x Skapa där skeppet är
- x Inte skjuta varje frame
- - Skada fiender + ta bort
-*/
+using TMPro;
 
 public class ShipController : MonoBehaviour
 {
@@ -43,6 +27,13 @@ public class ShipController : MonoBehaviour
     [SerializeField]
     float timeBetweenShots = 0.5f;
 
+    [Header("Score")]
+    [SerializeField]
+    TMP_Text scoreLabel;
+
+    public static int score = 0;
+
+
     void Start()
     {
         healthMeter.maxValue = health;
@@ -52,6 +43,14 @@ public class ShipController : MonoBehaviour
 
     void Update()
     {
+        scoreLabel.SetText("Score: " + score);
+
+        if (health == 0)
+        {
+         print("GAMEOVER");
+            SceneManager.LoadScene(2);
+        }
+
         float xMove = Input.GetAxisRaw("Horizontal");
         float yMove = Input.GetAxisRaw("Vertical");
 

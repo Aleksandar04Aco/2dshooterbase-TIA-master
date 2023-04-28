@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class BossControler : MonoBehaviour
 {
@@ -15,7 +17,7 @@ GameObject explosion;
 void Start()
 
 {
-float x = Random.Range(-2,6f);
+float x = Random.Range(3,6f);
 }
 
 private void OnTriggerEnter2D(Collider2D other)
@@ -27,10 +29,13 @@ private void OnTriggerEnter2D(Collider2D other)
 
             if (health == 0)
             {
-                Destroy(this.gameObject);
-             Instantiate(explosion, transform.position, Quaternion.identity);
 
-                }
+            Destroy(this.gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            SceneManager.LoadScene(3);
+            ShipController.score += 175;
+            
+           }
         }
     
  if (other.gameObject.tag == "Player")

@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour
         if (transform.position.y < -7)
         {
             Destroy(this.gameObject);
+            
         }
     }
 
@@ -49,6 +50,8 @@ public class EnemyController : MonoBehaviour
                 GameObject bossGenerator = GameObject.Find("BossGenerator");
 
                 bossGenerator.GetComponent<BossGenerator>().enemiesKilled++;
+
+                ShipController.score += 15;
             }
         }
         if (other.gameObject.tag == "Player")

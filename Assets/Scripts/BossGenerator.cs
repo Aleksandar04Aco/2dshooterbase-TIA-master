@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BossGenerator : MonoBehaviour
 {
     [SerializeField]
@@ -24,6 +25,8 @@ public class BossGenerator : MonoBehaviour
 
             GameObject generator = GameObject.Find("EnemyGenerator");
             generator.SetActive(false);
+            
         }
+
     }
 }
