@@ -17,7 +17,7 @@ GameObject explosion;
 void Start()
 
 {
-float x = Random.Range(3,6f);
+float x = Random.Range(3,3f);
 }
 
 private void OnTriggerEnter2D(Collider2D other)

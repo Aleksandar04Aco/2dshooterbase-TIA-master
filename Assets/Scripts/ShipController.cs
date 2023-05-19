@@ -69,6 +69,13 @@ public class ShipController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.tag == "boss")
+        {
+            print("GAMEOVER");
+            SceneManager.LoadScene(2);
+        }
+
+
         if (other.gameObject.tag == "enemy")
         {
             health--;
